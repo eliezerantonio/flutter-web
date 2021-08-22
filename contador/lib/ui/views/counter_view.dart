@@ -18,7 +18,7 @@ class _CounterViewState extends State<CounterView> {
         CustomAppMenu(),
         Spacer(),
         Text(
-          "Contador Sateful",
+          "Contador Steful",
           style: TextStyle(fontSize: 20),
         ),
         FittedBox(
