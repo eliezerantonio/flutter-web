@@ -1,3 +1,4 @@
+import 'package:contador/services/navigation_service.dart';
 import 'package:contador/ui/shared/custom_flat_button.dart';
 import 'package:flutter/material.dart';
 
@@ -12,19 +13,19 @@ class CustomAppMenu extends StatelessWidget {
       child: Row(
         children: [
           CustomFlatButton(
-            onPressed: () => Navigator.pushNamed(context, '/stateful'),
+            onPressed: () => navigationService.navigateTo('/stateful'),
             text: 'Contador Stateful',
             color: Colors.black,
           ),
           SizedBox(width: 10),
           CustomFlatButton(
-            onPressed: () => Navigator.pushNamed(context, '/provider'),
+            onPressed: () => navigationService.navigateTo('/provider'),
             text: 'Contador Provider',
             color: Colors.black,
           ),
           SizedBox(width: 10),
           CustomFlatButton(
-            onPressed: () => Navigator.pushNamed(context, '/404'),
+            onPressed: () => navigationService.navigateTo('/404'),
             text: 'Outra pagina',
             color: Colors.black,
           ),
