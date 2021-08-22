@@ -11,19 +11,24 @@ class CounterProviderPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => CounterProvider(),
-      child: _counterProviderPageBody(),
+      child: CounterProviderPageBody(),
     );
   }
+}
 
-  Scaffold _counterProviderPageBody() {
-    return Scaffold(
+  class CounterProviderPageBody extends StatelessWidget {
+  
+    @override
+    Widget build(BuildContext context){ 
+        final counterProvider = context.watch<CounterProvider>();
+          return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomAppMenu(),
           Spacer(),
           Text(
-            "Contador Provider",
+            "Contador ${counterProvider.counter}",
             style: TextStyle(fontSize: 20),
           ),
           FittedBox(
@@ -31,7 +36,7 @@ class CounterProviderPage extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "Contador: $counter",
+                "Contador ${counterProvider.counter}",
                 style: TextStyle(
                   fontSize: 80,
                   fontWeight: FontWeight.bold,
@@ -44,11 +49,11 @@ class CounterProviderPage extends StatelessWidget {
             children: [
               CustomFlatButton(
                 text: 'Incrementar',
-                onPressed: () => counter++,
+                onPressed: () => counterProvider.increment(),
               ),
               CustomFlatButton(
                 text: 'Decrementar',
-                onPressed: () => counter--,
+                onPressed: () => counterProvider.decrement(),
               ),
             ],
           ),
@@ -56,5 +61,6 @@ class CounterProviderPage extends StatelessWidget {
         ],
       ),
     );
+    }
   }
-}
+
