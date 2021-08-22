@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class _NavigationService {
+class NavigationService {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   Future navigateTo(String routeName) {
@@ -12,4 +12,4 @@ class _NavigationService {
   }
 }
 
-final navigationService = new _NavigationService();
+
