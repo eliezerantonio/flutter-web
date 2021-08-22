@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
       title: 'Rotas App',
       initialRoute: '/stateful',
       onGenerateRoute: RouteGenerator.generateRoute,
+      
       builder: (_, child) {
         return MainLayoutPage(
           child: child ?? Container(),
