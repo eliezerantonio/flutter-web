@@ -1,25 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:contador/providers/counter_provider.dart';
 import 'package:contador/ui/shared/custom_app_menu.dart';
 import 'package:contador/ui/shared/custom_flat_button.dart';
+import 'package:flutter/material.dart';
 
-class CounterProviderPage extends StatelessWidget {
+class CounterPage extends StatefulWidget {
+  @override
+  _CounterPageState createState() => _CounterPageState();
+}
+
+class _CounterPageState extends State<CounterPage> {
   int counter = 0;
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => CounterProvider(),
-      child: CounterProviderPageBody(),
-    );
-  }
-}
-
-class CounterProviderPageBody extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final counterProvider = context.watch<CounterProvider>();
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -27,7 +19,7 @@ class CounterProviderPageBody extends StatelessWidget {
           CustomAppMenu(),
           Spacer(),
           Text(
-            "Contador Provider",
+            "Contador Sateful",
             style: TextStyle(fontSize: 20),
           ),
           FittedBox(
@@ -35,7 +27,7 @@ class CounterProviderPageBody extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "Contador ${counterProvider.counter}",
+                "Contador: $counter",
                 style: TextStyle(
                   fontSize: 80,
                   fontWeight: FontWeight.bold,
@@ -48,11 +40,11 @@ class CounterProviderPageBody extends StatelessWidget {
             children: [
               CustomFlatButton(
                 text: 'Incrementar',
-                onPressed: () => counterProvider.increment(),
+                onPressed: () => setState(() => counter++),
               ),
               CustomFlatButton(
                 text: 'Decrementar',
-                onPressed: () => counterProvider.decrement(),
+                onPressed: () => setState(() => counter--),
               ),
             ],
           ),
