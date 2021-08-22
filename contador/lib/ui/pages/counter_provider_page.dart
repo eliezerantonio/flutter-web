@@ -24,7 +24,6 @@ class CounterProviderPageBody extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CustomAppMenu(),
           Spacer(),
           Text(
             "Contador Provider",

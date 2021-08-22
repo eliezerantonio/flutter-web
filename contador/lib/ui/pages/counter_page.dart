@@ -16,7 +16,6 @@ class _CounterPageState extends State<CounterPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CustomAppMenu(),
           Spacer(),
           Text(
             "Contador Sateful",

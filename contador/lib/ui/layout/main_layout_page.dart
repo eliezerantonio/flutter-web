@@ -1,7 +1,10 @@
 import 'package:contador/ui/shared/custom_app_menu.dart';
 import 'package:flutter/material.dart';
 
-class MainLayout extends StatelessWidget {
+class MainLayoutPage extends StatelessWidget {
+  final Widget child;
+
+  const MainLayoutPage({Key? key, required this.child}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,8 +13,8 @@ class MainLayout extends StatelessWidget {
           children: [
             CustomAppMenu(),
             Spacer(),
-            //TODO:view
-            Spacer()
+            Expanded(child: child),
+            Spacer(),
           ],
         ),
       ),
