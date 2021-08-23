@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:contador/providers/counter_provider.dart';
-import 'package:contador/ui/shared/custom_app_menu.dart';
 import 'package:contador/ui/shared/custom_flat_button.dart';
 
 class CounterProviderPage extends StatelessWidget {

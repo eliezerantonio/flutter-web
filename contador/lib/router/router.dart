@@ -8,18 +8,25 @@ class Flurorouter {
   static final FluroRouter router = new FluroRouter();
 
   static void configureRoutes() {
-    
     router.define(
       '/',
       handler: _counterHandler,
       transitionType: TransitionType.fadeIn,
     );
 
+    //statefull
     router.define(
       '/stateful',
       handler: _counterHandler,
       transitionType: TransitionType.fadeIn,
     );
+    router.define(
+      '/stateful:base',
+      handler: _counterHandler,
+      transitionType: TransitionType.fadeIn,
+    );
+
+    //fim statefull
 
     router.define(
       '/provider',
@@ -32,7 +39,10 @@ class Flurorouter {
 
   //handlers
   static Handler _counterHandler = new Handler(
-    handlerFunc: (context, params) => CounterView(),
+    handlerFunc: (context, params) {
+      print(params);
+      return CounterView();
+    },
   );
 
   static Handler _counterProviderHandler = new Handler(

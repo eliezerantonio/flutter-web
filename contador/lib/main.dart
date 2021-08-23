@@ -1,5 +1,4 @@
 import 'package:contador/locator.dart';
-import 'package:contador/router/route_generator.dart';
 import 'package:contador/router/router.dart';
 import 'package:contador/ui/layout/main_layout_page.dart';
 import 'package:flutter/material.dart';
