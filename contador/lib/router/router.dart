@@ -10,15 +10,16 @@ class Flurorouter {
     router.define(
       '/',
       handler: _counterHandler,
+      transitionType: TransitionType.none,
     );
 
-    router.define(
-      '/stateful',
-      handler: _statefulHandler,
-    );
+    router.define('/stateful',
+        handler: _counterStatefulHandler, transitionType: TransitionType.none);
+
     router.define(
       '/provider',
-      handler: _providerHandler,
+      handler: _counterProviderHandler,
+      transitionType: TransitionType.none,
     );
   }
 
@@ -26,10 +27,12 @@ class Flurorouter {
   static Handler _counterHandler = new Handler(
     handlerFunc: (context, params) => CounterView(),
   );
-  static Handler _statefulHandler = new Handler(
+
+  static Handler _counterStatefulHandler = new Handler(
     handlerFunc: (context, params) => CounterView(),
   );
 
-  static Handler _providerHandler =
-      new Handler(handlerFunc: (context, params) => CounterProviderView());
+  static Handler _counterProviderHandler = new Handler(
+    handlerFunc: (context, params) => CounterProviderView(),
+  );
 }
