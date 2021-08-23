@@ -23,7 +23,6 @@ class CounterProviderViewBody extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        CustomAppMenu(),
         Spacer(),
         Text(
           "Contador Provider",
