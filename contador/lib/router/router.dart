@@ -40,7 +40,7 @@ class Flurorouter {
   //handlers
   static Handler _counterHandler = new Handler(
     handlerFunc: (context, params) {
-      print(params);
+      print(params['base']?[0]);
       return CounterView();
     },
   );
