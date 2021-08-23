@@ -49,7 +49,7 @@ class Flurorouter {
   static Handler _counterProviderHandler =
       new Handler(handlerFunc: (context, params) {
     return CounterProviderView(
-      base: params['base']?[0] ?? '5',
+      base: params['q']?[0] ?? '5',
     );
   });
 
