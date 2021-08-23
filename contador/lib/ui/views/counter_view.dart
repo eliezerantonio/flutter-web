@@ -1,4 +1,3 @@
-import 'package:contador/ui/shared/custom_app_menu.dart';
 import 'package:contador/ui/shared/custom_flat_button.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +14,7 @@ class _CounterViewState extends State<CounterView> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        CustomAppMenu(),
+        // CustomAppMenu(),
         Spacer(),
         Text(
           "Contador Steful",

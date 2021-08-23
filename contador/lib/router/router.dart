@@ -4,7 +4,19 @@ import 'package:fluro/fluro.dart';
 class Flurorouter {
   static final FluroRouter router = new FluroRouter();
   static void configureRoutes() {
-    router.define('/', handler: _counterHandler);
+    router.define(
+      '/',
+      handler: _counterHandler,
+    );
+
+    router.define(
+      '/stateful',
+      handler: _counterHandler,
+    );
+    router.define(
+      '/provider',
+      handler: _counterHandler,
+    );
   }
 
   //handlers
