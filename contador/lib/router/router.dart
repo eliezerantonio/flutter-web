@@ -21,7 +21,7 @@ class Flurorouter {
       transitionType: TransitionType.fadeIn,
     );
     router.define(
-      '/stateful:base',
+      '/stateful/:base',
       handler: _counterHandler,
       transitionType: TransitionType.fadeIn,
     );

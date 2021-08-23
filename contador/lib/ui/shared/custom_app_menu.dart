@@ -87,6 +87,13 @@ class _MobileMenu extends StatelessWidget {
             text: 'Outra pagina',
             color: Colors.black,
           ),
+          SizedBox(width: 10),
+          CustomFlatButton(
+            onPressed: () =>
+                locator<NavigationService>().navigateTo('/stateful/24'),
+            text: 'Statefull 24',
+            color: Colors.black,
+          ),
         ],
       ),
     );
