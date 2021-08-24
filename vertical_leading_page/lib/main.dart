@@ -1,28 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:vertical_leading_page/router/router.dart';
-import 'package:vertical_leading_page/ui/pages/home_page.dart';
-
+ 
 void main() => runApp(MyApp());
-
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    super.initState();
-    Flurorouter.configureRoutes();
-  }
-
+ 
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Vertical Scrolling',
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
-      onGenerateRoute: Flurorouter.router.generator,
+      title: 'Material App',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Material App Bar'),
+        ),
+        body: Center(
+          child: Container(
+            child: Text('Hello World'),
+          ),
+        ),
+      ),
     );
   }
 }
