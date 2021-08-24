@@ -25,6 +25,7 @@ dependencies:
   fluro: ^2.0.3
   flutter:
     sdk: flutter
+  google_fonts: ^2.1.0
 
 dev_dependencies:
   flutter_test:
