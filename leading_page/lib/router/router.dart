@@ -9,7 +9,6 @@ class Flurorouter {
     router.define('/:page', handler: homeHandler);
 
     //404
-
     router.notFoundHandler = homeHandler;
   }
 }
