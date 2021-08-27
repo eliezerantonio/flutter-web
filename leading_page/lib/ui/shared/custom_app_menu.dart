@@ -35,12 +35,11 @@ class _CustomAppMenuState extends State<CustomAppMenu>
             isOpen = !isOpen;
           });
         },
-        child: AnimatedContainer(
+        child: Container(
           padding: EdgeInsets.symmetric(horizontal: 10),
           width: 150,
-          height: isOpen ? 300 : 50,
+          height: isOpen ? 308 : 50,
           color: Colors.black,
-          duration: Duration(milliseconds: 200),
           child: Column(
             children: [
               _MenuTile(isOpen: isOpen, controller: controller),
@@ -50,6 +49,7 @@ class _CustomAppMenuState extends State<CustomAppMenu>
                 CustomMenuItem(text: 'Pricing', onPressed: () {}),
                 CustomMenuItem(text: 'Contact', onPressed: () {}),
                 CustomMenuItem(text: 'Location', onPressed: () {}),
+                SizedBox(height: 8)
               ]
             ],
           ),
