@@ -5,8 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomMenuItem extends StatefulWidget {
   final String text;
   final Function onPressed;
+  final int delay;
 
-  const CustomMenuItem({Key? key, required this.text, required this.onPressed})
+  CustomMenuItem(
+      {Key? key, required this.text, required this.onPressed, this.delay = 0})
       : super(key: key);
   @override
   _CustomMenuItemState createState() => _CustomMenuItemState();
@@ -18,6 +20,8 @@ class _CustomMenuItemState extends State<CustomMenuItem> {
   Widget build(BuildContext context) {
     return FadeInLeft(
       from: 10,
+      duration: Duration(milliseconds: 150),
+      delay: Duration(milliseconds: widget.delay),
       child: MouseRegion(
         onEnter: (_) => setState(() => isHover = true),
         onExit: (_) => setState(() => isHover = false),
