@@ -57,12 +57,16 @@ class _CustomAppMenuState extends State<CustomAppMenu>
                     onPressed: () => pageProvider.goTo(1)),
                 CustomMenuItem(
                     delay: 30,
-                    text: 'Contact',
+                    text: 'Pricing',
                     onPressed: () => pageProvider.goTo(2)),
+                CustomMenuItem(
+                    delay: 30,
+                    text: 'Contact',
+                    onPressed: () => pageProvider.goTo(3)),
                 CustomMenuItem(
                     delay: 60,
                     text: 'Location',
-                    onPressed: () => pageProvider.goTo(3)),
+                    onPressed: () => pageProvider.goTo(4)),
                 SizedBox(height: 8)
               ]
             ],

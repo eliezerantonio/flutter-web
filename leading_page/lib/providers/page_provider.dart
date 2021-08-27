@@ -1,6 +1,4 @@
-import 'dart:html' as html;
-import 'dart:ui';
-
+import 'package:universal_html/html.dart' as html;
 import 'package:flutter/material.dart';
 
 class PageProvider with ChangeNotifier {
