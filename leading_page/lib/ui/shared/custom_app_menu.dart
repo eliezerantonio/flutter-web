@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:leading_page/ui/shared/custom_menu_item.dart';
 
 class CustomAppMenu extends StatefulWidget {
   @override
@@ -43,6 +44,13 @@ class _CustomAppMenuState extends State<CustomAppMenu>
           child: Column(
             children: [
               _MenuTile(isOpen: isOpen, controller: controller),
+              if (isOpen) ...[
+                CustomMenuItem(text: 'Home', onPressed: () {}),
+                CustomMenuItem(text: 'About', onPressed: () {}),
+                CustomMenuItem(text: 'Pricing', onPressed: () {}),
+                CustomMenuItem(text: 'Contact', onPressed: () {}),
+                CustomMenuItem(text: 'Location', onPressed: () {}),
+              ]
             ],
           ),
         ),

@@ -22,6 +22,9 @@ class _CustomMenuItemState extends State<CustomMenuItem> {
         onTap: () => widget.onPressed(),
         child: AnimatedContainer(
           duration: Duration(milliseconds: 300),
+          width: 150,
+          height: 50,
+          color: isHover ? Colors.pinkAccent : Colors.black,
           child: Center(
             child: Text(
               widget.text,
