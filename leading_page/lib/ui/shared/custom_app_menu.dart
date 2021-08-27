@@ -34,34 +34,59 @@ class _CustomAppMenuState extends State<CustomAppMenu>
             isOpen = !isOpen;
           });
         },
-        child: Container(
+        child: AnimatedContainer(
           padding: EdgeInsets.symmetric(horizontal: 10),
           width: 150,
-          height: 50,
+          height: isOpen ? 300 : 50,
           color: Colors.black,
-          child: Row(
+          duration: Duration(milliseconds: 200),
+          child: Column(
             children: [
-              AnimatedContainer(
-                duration: Duration(milliseconds: 500),
-                curve: Curves.easeInOut,
-                width: isOpen ? 50 : 0,
-              ),
-              Text(
-                "Menu",
-                style: GoogleFonts.roboto(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
-              ),
-              Spacer(),
-              AnimatedIcon(
-                icon: AnimatedIcons.close_menu,
-                color: Colors.white,
-                progress: controller,
-              )
+              _MenuTile(isOpen: isOpen, controller: controller),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _MenuTile extends StatelessWidget {
+  const _MenuTile({
+    Key? key,
+    required this.isOpen,
+    required this.controller,
+  }) : super(key: key);
+
+  final bool isOpen;
+  final AnimationController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 150,
+      height: 50,
+      child: Row(
+        children: [
+          AnimatedContainer(
+            duration: Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+            width: isOpen ? 50 : 0,
+          ),
+          Text(
+            "Menu",
+            style: GoogleFonts.roboto(
+              color: Colors.white,
+              fontSize: 18,
+            ),
+          ),
+          Spacer(),
+          AnimatedIcon(
+            icon: AnimatedIcons.close_menu,
+            color: Colors.white,
+            progress: controller,
+          )
+        ],
       ),
     );
   }
