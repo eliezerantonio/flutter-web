@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
         gradient: LinearGradient(
             colors: [
               Colors.pink,
-              Colors.deepPurple,
+              Colors.purpleAccent,
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,

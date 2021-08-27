@@ -45,10 +45,10 @@ class _CustomAppMenuState extends State<CustomAppMenu>
               _MenuTile(isOpen: isOpen, controller: controller),
               if (isOpen) ...[
                 CustomMenuItem(delay: 0, text: 'About', onPressed: () {}),
-                CustomMenuItem(delay: 20, text: 'Contact', onPressed: () {}),
-                CustomMenuItem(delay: 40, text: 'Location', onPressed: () {}),
-                CustomMenuItem(delay: 60, text: 'Pricing', onPressed: () {}),
-                CustomMenuItem(delay: 80, text: 'Home', onPressed: () {}),
+                CustomMenuItem(delay: 30, text: 'Contact', onPressed: () {}),
+                CustomMenuItem(delay: 60, text: 'Location', onPressed: () {}),
+                CustomMenuItem(delay: 90, text: 'Pricing', onPressed: () {}),
+                CustomMenuItem(delay: 122, text: 'Home', onPressed: () {}),
                 SizedBox(height: 8)
               ]
             ],
