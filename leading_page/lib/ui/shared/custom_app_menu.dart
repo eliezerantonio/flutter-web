@@ -48,25 +48,21 @@ class _CustomAppMenuState extends State<CustomAppMenu>
               _MenuTile(isOpen: isOpen, controller: controller),
               if (isOpen) ...[
                 CustomMenuItem(
+                    delay: 122,
+                    text: 'Home',
+                    onPressed: () => pageProvider.goTo(0)),
+                CustomMenuItem(
                     delay: 0,
                     text: 'About',
-                    onPressed: () => pageProvider.goTo(0)),
+                    onPressed: () => pageProvider.goTo(1)),
                 CustomMenuItem(
                     delay: 30,
                     text: 'Contact',
-                    onPressed: () => pageProvider.goTo(1)),
+                    onPressed: () => pageProvider.goTo(2)),
                 CustomMenuItem(
                     delay: 60,
                     text: 'Location',
-                    onPressed: () => pageProvider.goTo(2)),
-                CustomMenuItem(
-                    delay: 90,
-                    text: 'Pricing',
                     onPressed: () => pageProvider.goTo(3)),
-                CustomMenuItem(
-                    delay: 122,
-                    text: 'Home',
-                    onPressed: () => pageProvider.goTo(4)),
                 SizedBox(height: 8)
               ]
             ],
