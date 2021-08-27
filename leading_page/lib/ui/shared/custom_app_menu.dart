@@ -79,7 +79,7 @@ class _MenuTile extends StatelessWidget {
           AnimatedContainer(
             duration: Duration(milliseconds: 500),
             curve: Curves.easeInOut,
-            width: isOpen ? 50 : 0,
+            width: isOpen ? 45 : 0,
           ),
           Text(
             "Menu",
