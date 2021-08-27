@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
 class PageProvider with ChangeNotifier {
-  PageController scroolConrolle = new PageController();
+  PageController scrolConroller = new PageController();
 
-
-  
+  goTo(index) {
+    scrolConroller.animateToPage(
+      index,
+      duration: Duration(microseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
 }
