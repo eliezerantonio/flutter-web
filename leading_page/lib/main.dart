@@ -14,9 +14,12 @@ class AppState extends StatelessWidget {
     return MultiProvider(providers: [
       ChangeNotifierProvider(
         create: (_) => PageProvider(),
-        child: MyApp(),
+       
       )
-    ]);
+    ],
+      child: MyApp(),
+    
+    );
   }
 }
 
