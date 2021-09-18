@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'ui/layout/auth/auth_layout.dart';
 
 void main() {
-  // Flurorouter.configureRoutes();
+  Flurorouter.configureRoutes();
   runApp(MyApp());
 }
 
