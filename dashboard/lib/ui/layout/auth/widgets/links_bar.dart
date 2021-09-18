@@ -18,6 +18,7 @@ class _LinkBarState extends State<LinkBar> {
       width: double.infinity,
       color: Colors.black,
       child: Wrap(
+        alignment: WrapAlignment.center,
         children: [
           LinkText(text: "About"),
           LinkText(text: "Help Center"),

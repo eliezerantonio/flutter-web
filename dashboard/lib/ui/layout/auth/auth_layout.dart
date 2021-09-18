@@ -34,26 +34,28 @@ class _DesktopBody extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Container(
-        width: size.width,
-        height: size.height * 0.95,
-        color: Colors.red,
-        child: Row(
-          children: [
-            //Twiter background
-            BackgroundTwitter(),
-            //View container background
-            Container(
-                width: 600,
-                height: double.infinity,
-                color: Colors.black,
-                child: Column(
-                  children: [
-                    CustomTitle(),
-                    SizedBox(height: 50),
-                    Expanded(child: child)
-                  ],
-                ))
-          ],
-        ));
+      width: size.width,
+      height: size.height * 0.95,
+      color: Colors.red,
+      child: Row(
+        children: [
+          //Twiter background
+          BackgroundTwitter(),
+          //View container background
+          Container(
+            width: 600,
+            height: double.infinity,
+            color: Colors.black,
+            child: Column(
+              children: [
+                CustomTitle(),
+                SizedBox(height: 50),
+                Expanded(child: child)
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

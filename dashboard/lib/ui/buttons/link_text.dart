@@ -20,9 +20,10 @@ class _LinkTextState extends State<LinkText> {
         child: Text(
           widget.text,
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 14,
             color: Colors.grey[700],
-            decoration: TextDecoration.underline,
+            decoration:
+                isHover ? TextDecoration.underline : TextDecoration.none,
           ),
         ),
       ),
