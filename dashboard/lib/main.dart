@@ -21,6 +21,13 @@ class MyApp extends StatelessWidget {
           child: child!,
         );
       },
+      theme: ThemeData.light().copyWith(
+        scrollbarTheme: ScrollbarThemeData().copyWith(
+          thumbColor: MaterialStateProperty.all(
+            Colors.grey.withOpacity(0.5)
+          ),
+        ),
+      ),
     );
   }
 }

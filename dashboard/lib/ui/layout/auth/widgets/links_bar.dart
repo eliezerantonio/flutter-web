@@ -14,7 +14,7 @@ class _LinkBarState extends State<LinkBar> {
     final size = MediaQuery.of(context).size;
 
     return Container(
-      height: size.height * 0.05,
+      height: (size.width > 1000) ? size.height * 0.07 : null,
       width: double.infinity,
       color: Colors.black,
       child: Wrap(
