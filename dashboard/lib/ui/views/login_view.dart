@@ -1,6 +1,7 @@
 import 'package:dashboard/router/router.dart';
 import 'package:dashboard/ui/buttons/custom_outline_button.dart';
 import 'package:dashboard/ui/buttons/link_text.dart';
+import 'package:dashboard/ui/inputs/custom_inputs.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatelessWidget {
@@ -25,7 +26,7 @@ class LoginView extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                   ),
-                  decoration: buildInputDecoration(
+                  decoration: CustomInputs.authInputDecoration(
                       hint: "", icon: Icons.email_outlined, label: "Email"),
                 ),
                 SizedBox(
@@ -37,7 +38,7 @@ class LoginView extends StatelessWidget {
                     color: Colors.white,
                   ),
                   obscureText: true,
-                  decoration: buildInputDecoration(
+                  decoration: CustomInputs.authInputDecoration(
                     hint: "********",
                     label: "Password",
                     icon: Icons.lock_outline_rounded,
@@ -58,6 +59,7 @@ class LoginView extends StatelessWidget {
                 LinkText(
                     text: "Nova conta",
                     onPressed: () {
+                      print("login");
                       Navigator.pushNamed(context, Flurorouter.registerRoute);
                     }),
               ],
@@ -68,27 +70,4 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  InputDecoration buildInputDecoration(
-      {required String hint, required String label, required IconData icon}) {
-    return InputDecoration(
-      border: OutlineInputBorder(
-        borderSide: BorderSide(
-          color: Colors.white.withOpacity(0.3),
-        ),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(
-          color: Colors.white.withOpacity(0.3),
-        ),
-      ),
-      hintText: hint,
-      labelText: label,
-      prefixIcon: Icon(
-        icon,
-        color: Colors.grey,
-      ),
-      hintStyle: TextStyle(color: Colors.grey),
-      labelStyle: TextStyle(color: Colors.grey),
-    );
-  }
 }

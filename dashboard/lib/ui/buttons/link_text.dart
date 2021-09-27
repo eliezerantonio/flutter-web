@@ -15,7 +15,7 @@ class _LinkTextState extends State<LinkText> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => widget.onPressed,
+      onTap: () => widget.onPressed(),
       child: MouseRegion(
         onEnter: (_) => setState(() => isHover = true),
         onExit: (_) => setState(() => isHover = false),
