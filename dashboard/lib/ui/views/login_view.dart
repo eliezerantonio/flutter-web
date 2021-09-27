@@ -1,3 +1,4 @@
+import 'package:dashboard/router/router.dart';
 import 'package:dashboard/ui/buttons/custom_outline_button.dart';
 import 'package:dashboard/ui/buttons/link_text.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +48,6 @@ class LoginView extends StatelessWidget {
                 ),
                 CustomOutlinedButton(
                   onPressed: () {},
-                  
                   text: "Entrar",
                 ),
 
@@ -55,7 +55,11 @@ class LoginView extends StatelessWidget {
                   height: 20,
                 ),
 
-                LinkText(text: "Nova conta", onPressed: () {}),
+                LinkText(
+                    text: "Nova conta",
+                    onPressed: () {
+                      Navigator.pushNamed(context, Flurorouter.registerRoute);
+                    }),
               ],
             ),
           ),
