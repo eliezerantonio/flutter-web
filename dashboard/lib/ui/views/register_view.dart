@@ -2,8 +2,8 @@ import 'package:dashboard/ui/buttons/custom_outline_button.dart';
 import 'package:dashboard/ui/buttons/link_text.dart';
 import 'package:flutter/material.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({Key? key}) : super(key: key);
+class RegisterView extends StatelessWidget {
+  const RegisterView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,14 +48,14 @@ class LoginView extends StatelessWidget {
                 CustomOutlinedButton(
                   onPressed: () {},
                   
-                  text: "Entrar",
+                  text: "Criar conta",
                 ),
 
                 SizedBox(
                   height: 20,
                 ),
 
-                LinkText(text: "Nova conta", onPressed: () {}),
+                LinkText(text: "Tenho uma conta", onPressed: () {}),
               ],
             ),
           ),
