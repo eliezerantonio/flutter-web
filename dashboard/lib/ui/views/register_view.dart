@@ -1,81 +1,121 @@
+import 'package:dashboard/providers/register_form.provider.dart';
 import 'package:dashboard/router/router.dart';
 import 'package:dashboard/ui/buttons/custom_outline_button.dart';
 import 'package:dashboard/ui/buttons/link_text.dart';
 import 'package:dashboard/ui/inputs/custom_inputs.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 100),
-      padding: EdgeInsets.symmetric(horizontal: 20),
-      color: Colors.black,
-      child: Center(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            maxWidth: 370,
-          ),
-          child: Form(
-            child: Column(
-              children: [
-                //password
-                TextFormField(
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                  decoration: CustomInputs.authInputDecoration(
-                      hint: "",
-                      icon: Icons.people_outline_rounded,
-                      label: "Password"),
-                ), //email
-                TextFormField(
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                  decoration: CustomInputs.authInputDecoration(
-                      hint: "", icon: Icons.email_outlined, label: "Email"),
+    return ChangeNotifierProvider(
+        create: (_) => RegisterFormProvider(),
+        child: Builder(builder: (context) {
+          final registerFormProvider =
+              Provider.of(context)<RegisterFormProvider>();
+          return Container(
+            margin: EdgeInsets.only(top: 100),
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            color: Colors.black,
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: 370,
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-                //password
-                TextFormField(
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                  obscureText: true,
-                  decoration: CustomInputs.authInputDecoration(
-                    hint: "********",
-                    label: "Password",
-                    icon: Icons.lock_outline_rounded,
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                CustomOutlinedButton(
-                  onPressed: () {},
-                  text: "Criar conta",
-                ),
+                child: Form(
+                  autovalidateMode: AutovalidateMode.always,
+                  key:registerFormProvider.formKey,
+                  child: Column(
+                    children: [
+                      //password
+                      TextFormField(
+                        onChanged: (value) => registerFormProvider.name = value,
+                        validator: (value) {
+                          if (value!.isEmpty || value == null) {
+                            return "Digite o nome";
+                          }
+                          if (value.length < 10) {
+                            return "Digite ao menos 10 caracteres";
+                          }
+                        },
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                        decoration: CustomInputs.authInputDecoration(
+                            hint: "",
+                            icon: Icons.people_outline_rounded,
+                            label: "Nome"),
+                      ), //email
+                      TextFormField(
+                        onChanged: (value) =>
+                            registerFormProvider.email = value,
+                        validator: (value) {
+                          if (!EmailValidator.validate(value ?? ""))
+                            return 'Digite o email correcto';
 
-                SizedBox(
-                  height: 20,
-                ),
+                          return null;
+                        },
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                        decoration: CustomInputs.authInputDecoration(
+                            hint: "",
+                            icon: Icons.email_outlined,
+                            label: "Email"),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      //password
+                      TextFormField(
+                        onChanged: (value) =>
+                            registerFormProvider.password = value,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Digite o nome";
+                          }
+                          if (value.length < 6) {
+                            return "Digite ao menos 9 caracteres";
+                          }
+                        },
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                        obscureText: true,
+                        decoration: CustomInputs.authInputDecoration(
+                          hint: "********",
+                          label: "Password",
+                          icon: Icons.lock_outline_rounded,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      CustomOutlinedButton(
+                        onPressed: () {},
+                        text: "Criar conta",
+                      ),
 
-                LinkText(
-                  text: "Tenho uma conta",
-                  onPressed: () {
-                    Navigator.pushNamed(context, Flurorouter.loginRoute);
-                  },
+                      SizedBox(
+                        height: 20,
+                      ),
+
+                      LinkText(
+                        text: "Tenho uma conta",
+                        onPressed: () {
+                          Navigator.pushNamed(context, Flurorouter.loginRoute);
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
-    );
+          );
+        }));
   }
 }
