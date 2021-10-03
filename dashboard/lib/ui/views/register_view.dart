@@ -16,7 +16,7 @@ class RegisterView extends StatelessWidget {
         create: (_) => RegisterFormProvider(),
         child: Builder(builder: (context) {
           final registerFormProvider =
-              Provider.of(context)<RegisterFormProvider>();
+              Provider.of<RegisterFormProvider>(context, listen: false);
           return Container(
             margin: EdgeInsets.only(top: 100),
             padding: EdgeInsets.symmetric(horizontal: 20),
@@ -28,7 +28,7 @@ class RegisterView extends StatelessWidget {
                 ),
                 child: Form(
                   autovalidateMode: AutovalidateMode.always,
-                  key:registerFormProvider.formKey,
+                  key: registerFormProvider.formKey,
                   child: Column(
                     children: [
                       //password
@@ -96,7 +96,9 @@ class RegisterView extends StatelessWidget {
                         height: 20,
                       ),
                       CustomOutlinedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          registerFormProvider.validateForm();
+                        },
                         text: "Criar conta",
                       ),
 

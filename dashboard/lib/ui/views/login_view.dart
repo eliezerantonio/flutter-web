@@ -1,3 +1,4 @@
+import 'package:dashboard/providers/auth_provider.dart';
 import 'package:dashboard/providers/login_form_provider.dart';
 import 'package:dashboard/router/router.dart';
 import 'package:dashboard/ui/buttons/custom_outline_button.dart';
@@ -10,8 +11,9 @@ import 'package:provider/provider.dart';
 class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
     return ChangeNotifierProvider(
-        create: (_) => LoginFormProvider(),
+        create: (_) => LoginFormProvider(authProvider),
         child: Builder(
           builder: (context) {
             final loginFormProvider =
