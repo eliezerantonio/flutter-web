@@ -1,3 +1,4 @@
+import 'package:dashboard/providers/sidemenu_provider.dart';
 import 'package:dashboard/ui/shared/navbar_avatar.dart';
 import 'package:dashboard/ui/shared/widgets/notifications_indicator.dart';
 import 'package:dashboard/ui/shared/widgets/search_text.dart';
@@ -8,21 +9,27 @@ class Navbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
       width: double.infinity,
       height: 50,
       decoration: boxDecoration(),
       child: Row(
         children: [
-//TODO: hamburguer icon
-          IconButton(onPressed: () {}, icon: Icon(Icons.menu_outlined)),
+          if (size.width <= 700) ...[
+            IconButton(
+                onPressed: () {
+                  SideMenuProvider.openMenu();
+                },
+                icon: Icon(Icons.menu_outlined)),
+          ],
           SizedBox(width: 5),
-
           //search input
-          ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 250),
-            child: SearchText(),
-          ),
+          if (size.width > 390)
+            ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: 250),
+              child: SearchText(),
+            ),
           Spacer(),
           NotificationsIndicator(),
           SizedBox(
