@@ -43,15 +43,19 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: Flurorouter.router.generator,
       navigatorKey: NavigationService.nivigatorKey,
       builder: (_, child) {
+           
         final authProvider = Provider.of<AuthProvider>(context);
 
-        if (authProvider.authStatus == AuthStatus.checking) {
+        if (authProvider.authStatus == AuthStatus.checking)
           return SplashLayout();
-        } else if (authProvider.authStatus == AuthStatus.authenticated) {
+
+        if (authProvider.authStatus == AuthStatus.authenticated) {
           return DashboardLayout(child: child!);
         } else {
           return AuthLayout(child: child!);
         }
+              
+
       },
       theme: ThemeData.light().copyWith(
         scrollbarTheme: ScrollbarThemeData().copyWith(
