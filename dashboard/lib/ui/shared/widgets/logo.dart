@@ -9,6 +9,7 @@ class Logo extends StatelessWidget {
     return Container(
         padding: EdgeInsets.only(top: 30),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
               Icons.bubble_chart_outlined,
