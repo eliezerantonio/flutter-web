@@ -61,8 +61,9 @@ class _DashboardLayoutState extends State<DashboardLayout>
                       ),
                     ),
                   Transform.translate(
-                      offset: Offset(SideMenuProvider.movemnt.value, 0),
-                      child: Sidebar())
+                    offset: Offset(SideMenuProvider.movemnt.value, 0),
+                    child: Sidebar(),
+                  )
                 ],
               ),
             ),
