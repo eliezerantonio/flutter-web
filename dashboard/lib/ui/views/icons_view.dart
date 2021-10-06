@@ -28,7 +28,59 @@ class IconsView extends StatelessWidget {
                   ),
                 ),
                 width: 170,
-              )
+              ),
+              WhiteCard(
+                title: 'Users',
+                child: Center(
+                  child: Icon(Icons.people),
+                ),
+                width: 170,
+              ),
+              WhiteCard(
+                title: 'all_inbox_outlined',
+                child: Center(
+                  child: Icon(
+                    Icons.all_inbox_outlined,
+                  ),
+                ),
+                width: 170,
+              ),
+              WhiteCard(
+                title: 'access_alarms_outlined',
+                child: Center(
+                  child: Icon(
+                    Icons.access_alarms_outlined,
+                  ),
+                ),
+                width: 170,
+              ),
+              WhiteCard(
+                title: 'accessibility',
+                child: Center(
+                  child: Icon(
+                    Icons.accessibility,
+                  ),
+                ),
+                width: 170,
+              ),
+              WhiteCard(
+                title: 'multiple_stop',
+                child: Center(
+                  child: Icon(
+                    Icons.multiple_stop,
+                  ),
+                ),
+                width: 170,
+              ),
+              WhiteCard(
+                title: 'add_to_home_screen_sharp',
+                child: Center(
+                  child: Icon(
+                    Icons.add_to_home_screen_sharp,
+                  ),
+                ),
+                width: 170,
+              ),
             ],
           )
         ],
