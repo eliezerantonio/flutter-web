@@ -1,3 +1,5 @@
+import 'package:dashboard/ui/cards/white_card.dart';
+import 'package:dashboard/ui/labels/custom_labels.dart';
 import 'package:flutter/material.dart';
 
 class DashboardView extends StatelessWidget {
@@ -6,12 +8,17 @@ class DashboardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: ListView(
-      physics: ClampingScrollPhysics(),
-      children: [
-
-        
-      ],
-    ));
+      child: ListView(
+        physics: ClampingScrollPhysics(),
+        children: [
+          Text(
+            "Dashboard",
+            style: CustomLabels.h1,
+          ),
+          SizedBox(height: 10),
+          WhiteCard(title: 'Sales statistics', child: Text("Hello word"))
+        ],
+      ),
+    );
   }
 }
