@@ -5,6 +5,7 @@ import 'package:dashboard/services/navigation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'providers/sidemenu_provider.dart';
 import 'ui/layout/auth/auth_layout.dart';
 import 'ui/layout/dashboard/dashboard_layout.dart';
 import 'ui/layout/splash/splash_layout.dart';
@@ -26,7 +27,11 @@ class ProviderApp extends StatelessWidget {
         ChangeNotifierProvider(
           lazy: false,
           create: (_) => AuthProvider(),
-        )
+        ),
+        ChangeNotifierProvider(
+          lazy: false,
+          create: (_) => SideMenuProvider(),
+        ),
       ],
       child: MyApp(),
     );
@@ -43,7 +48,6 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: Flurorouter.router.generator,
       navigatorKey: NavigationService.nivigatorKey,
       builder: (_, child) {
-           
         final authProvider = Provider.of<AuthProvider>(context);
 
         if (authProvider.authStatus == AuthStatus.checking)
@@ -54,8 +58,6 @@ class MyApp extends StatelessWidget {
         } else {
           return AuthLayout(child: child!);
         }
-              
-
       },
       theme: ThemeData.light().copyWith(
         scrollbarTheme: ScrollbarThemeData().copyWith(
