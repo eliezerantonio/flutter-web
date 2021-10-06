@@ -27,8 +27,6 @@ class DashboardHandlers {
     Provider.of<SideMenuProvider>(context, listen: false)
         .setCurrentPageUrl(Flurorouter.iconsRoute);
 
-    Provider.of<SideMenuProvider>(context, listen: false)
-        .setCurrentPageUrl(Flurorouter.iconsRoute);
     if (authProvider.authStatus == AuthStatus.authenticated)
       return IconsView();
     else
@@ -41,8 +39,6 @@ class DashboardHandlers {
     Provider.of<SideMenuProvider>(context, listen: false)
         .setCurrentPageUrl(Flurorouter.blankRoute);
 
-    Provider.of<SideMenuProvider>(context, listen: false)
-        .setCurrentPageUrl(Flurorouter.iconsRoute);
     if (authProvider.authStatus == AuthStatus.authenticated)
       return BlankView();
     else

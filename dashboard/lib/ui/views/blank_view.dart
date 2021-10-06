@@ -12,11 +12,11 @@ class BlankView extends StatelessWidget {
         physics: ClampingScrollPhysics(),
         children: [
           Text(
-            "Dashboard",
+            "Blank",
             style: CustomLabels.h1,
           ),
           SizedBox(height: 10),
-          WhiteCard(title: 'Sales statistics', child: Text("Hello word"))
+          WhiteCard(title: 'Inblank', child: Text("Hello word"))
         ],
       ),
     );

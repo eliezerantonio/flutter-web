@@ -98,8 +98,8 @@ class Sidebar extends StatelessWidget {
           MenuItem(
             text: 'Blank',
             icon: Icons.post_add_outlined,
-            isActive: sideMenuProvider.currrentPage == Flurorouter.iconsRoute,
-            onPressed: () => print("dashboard"),
+            isActive: sideMenuProvider.currrentPage == Flurorouter.blankRoute,
+            onPressed: () => navigateTo(Flurorouter.blankRoute),
           ),
           SizedBox(
             height: 50,
