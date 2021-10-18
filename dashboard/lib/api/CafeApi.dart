@@ -7,7 +7,7 @@ class CafeApi {
   static void configureDio() {
     //base da url
 
-    _dio.options.baseUrl = 'http/localhost:8080/api';
+    _dio.options.baseUrl = 'http://localhost:8080/api';
     //Configurar headers
 
     _dio.options.headers = {
@@ -22,6 +22,19 @@ class CafeApi {
       return resp.data;
     } catch (e) {
       throw ("Error no GET");
+    }
+  }
+
+  static Future post(String path, Map<String, dynamic> data) async {
+    print("vindo do formularip $data");
+    final formData = FormData.fromMap(data);
+
+    try {
+      final resp = await _dio.post(path, data: formData);
+
+      return resp.data;
+    } catch (e) {
+      throw ("Error no POST");
     }
   }
 }

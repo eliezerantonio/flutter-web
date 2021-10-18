@@ -1,3 +1,4 @@
+import 'package:dashboard/providers/auth_provider.dart';
 import 'package:dashboard/providers/register_form.provider.dart';
 import 'package:dashboard/router/router.dart';
 import 'package:dashboard/ui/buttons/custom_outline_button.dart';
@@ -50,6 +51,9 @@ class RegisterView extends StatelessWidget {
                             icon: Icons.people_outline_rounded,
                             label: "Nome"),
                       ), //email
+                                            SizedBox(
+                        height: 20,
+                      ),
                       TextFormField(
                         onChanged: (value) =>
                             registerFormProvider.email = value,
@@ -97,7 +101,19 @@ class RegisterView extends StatelessWidget {
                       ),
                       CustomOutlinedButton(
                         onPressed: () {
-                          registerFormProvider.validateForm();
+                          final validForm = registerFormProvider.validateForm();
+
+                          if (validForm) {
+                            final authProvider = Provider.of<AuthProvider>(
+                                context,
+                                listen: false);
+
+                            authProvider.register(
+                              registerFormProvider.email,
+                              registerFormProvider.password,
+                              registerFormProvider.name,
+                            );
+                          }
                         },
                         text: "Criar conta",
                       ),

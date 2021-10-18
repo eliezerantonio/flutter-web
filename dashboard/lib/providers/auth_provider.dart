@@ -1,3 +1,4 @@
+import 'package:dashboard/api/CafeApi.dart';
 import 'package:dashboard/services/local_storage.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -20,6 +21,25 @@ class AuthProvider with ChangeNotifier {
     LocalStorage.prefs.get("token");
     authStatus = AuthStatus.authenticated;
     notifyListeners();
+  }
+
+  register(String email, String password, String name) {
+    final data = {
+      "nombre": name,
+      "correo": email,
+      "password": password,
+    };
+
+    CafeApi.post('/usuarios', data).then((json) {
+      print(json);
+    }).catchError((e) {
+      print("Erro em: $e");
+    });
+
+    // LocalStorage.prefs.setString('token', this._token!);
+    // LocalStorage.prefs.get("token");
+    // authStatus = AuthStatus.authenticated;
+    // notifyListeners();
   }
 
   Future<bool> isAuthenticated() async {
