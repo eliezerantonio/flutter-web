@@ -2,7 +2,7 @@
 //
 //     final authResponse = authResponseFromMap(jsonString);
 
-import 'package:meta/meta.dart';
+
 import 'dart:convert';
 
 class AuthResponse {

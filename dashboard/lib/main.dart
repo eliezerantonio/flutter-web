@@ -3,6 +3,7 @@ import 'package:dashboard/providers/auth_provider.dart';
 import 'package:dashboard/router/router.dart';
 import 'package:dashboard/services/local_storage.dart';
 import 'package:dashboard/services/navigation_service.dart';
+import 'package:dashboard/services/notifications_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
       title: 'Admin Dashboard',
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
+      scaffoldMessengerKey: NotificationsService.messengerKey,
       onGenerateRoute: Flurorouter.router.generator,
       navigatorKey: NavigationService.nivigatorKey,
       builder: (_, child) {

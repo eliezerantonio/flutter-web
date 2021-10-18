@@ -19,7 +19,7 @@ class RegisterView extends StatelessWidget {
           final registerFormProvider =
               Provider.of<RegisterFormProvider>(context, listen: false);
           return Container(
-            margin: EdgeInsets.only(top: 100),
+            margin: EdgeInsets.only(top: 20),
             padding: EdgeInsets.symmetric(horizontal: 20),
             color: Colors.black,
             child: Center(
@@ -51,7 +51,7 @@ class RegisterView extends StatelessWidget {
                             icon: Icons.people_outline_rounded,
                             label: "Nome"),
                       ), //email
-                                            SizedBox(
+                      SizedBox(
                         height: 20,
                       ),
                       TextFormField(

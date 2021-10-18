@@ -1,11 +1,15 @@
 import 'package:dashboard/api/CafeApi.dart';
+import 'package:dashboard/models/http/auth_response.dart';
+import 'package:dashboard/router/router.dart';
 import 'package:dashboard/services/local_storage.dart';
+import 'package:dashboard/services/navigation_service.dart';
 import 'package:flutter/cupertino.dart';
 
 enum AuthStatus { checking, authenticated, notAuthenticated }
 
 class AuthProvider with ChangeNotifier {
   String? _token;
+  Usuario? user;
 
   AuthStatus authStatus = AuthStatus.checking;
 
@@ -31,15 +35,18 @@ class AuthProvider with ChangeNotifier {
     };
 
     CafeApi.post('/usuarios', data).then((json) {
-      print(json);
+      final authResponse = AuthResponse.fromMap(json);
+      this.user = authResponse.usuario;
+
+      authStatus = AuthStatus.authenticated;
+      LocalStorage.prefs.setString('token', authResponse.token);
+      NavigationService.replaceTo(Flurorouter.dashboardRoute);
+
+      notifyListeners();
+      
     }).catchError((e) {
       print("Erro em: $e");
     });
-
-    // LocalStorage.prefs.setString('token', this._token!);
-    // LocalStorage.prefs.get("token");
-    // authStatus = AuthStatus.authenticated;
-    // notifyListeners();
   }
 
   Future<bool> isAuthenticated() async {
