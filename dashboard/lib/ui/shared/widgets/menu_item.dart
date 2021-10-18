@@ -26,7 +26,7 @@ class _MenuItemState extends State<MenuItem> {
     return AnimatedContainer(
       duration: Duration(milliseconds: 250),
       color: isHovered
-          ? Colors.white.withOpacity(0.1)
+          ?  Colors.white.withOpacity(0.1)
           : widget.isActive
               ? Colors.white.withOpacity(0.1)
               : Colors.transparent,
