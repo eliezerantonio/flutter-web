@@ -51,8 +51,11 @@ class Sidebar extends StatelessWidget {
           MenuItem(
             text: 'Categories',
             icon: Icons.layers_outlined,
-            isActive: false,
-            onPressed: () => print("dashboard"),
+            isActive:
+                sideMenuProvider.currrentPage == Flurorouter.categoriesRoute,
+            onPressed: () {
+              navigateTo(Flurorouter.categoriesRoute);
+            },
           ),
           MenuItem(
             text: 'Products',
@@ -72,10 +75,10 @@ class Sidebar extends StatelessWidget {
             isActive: false,
             onPressed: () => print("dashboard"),
           ),
-        const  SizedBox(
+          const SizedBox(
             height: 30,
           ),
-         const TextSeparator(text: 'UI Elements'),
+          const TextSeparator(text: 'UI Elements'),
           MenuItem(
             text: 'Icons',
             isActive: sideMenuProvider.currrentPage == Flurorouter.iconsRoute,
