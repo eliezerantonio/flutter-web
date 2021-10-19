@@ -72,10 +72,10 @@ class Sidebar extends StatelessWidget {
             isActive: false,
             onPressed: () => print("dashboard"),
           ),
-          SizedBox(
+        const  SizedBox(
             height: 30,
           ),
-          TextSeparator(text: 'UI Elements'),
+         const TextSeparator(text: 'UI Elements'),
           MenuItem(
             text: 'Icons',
             isActive: sideMenuProvider.currrentPage == Flurorouter.iconsRoute,

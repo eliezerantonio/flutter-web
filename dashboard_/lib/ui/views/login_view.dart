@@ -34,6 +34,8 @@ class LoginView extends StatelessWidget {
                       children: [
                         //email
                         TextFormField(
+                          onFieldSubmitted: (_) =>
+                              onFormSubmit(loginFormProvider, authProvider),
                           onChanged: (value) => loginFormProvider.email = value,
                           validator: (value) {
                             if (!EmailValidator.validate(value ?? ''))
@@ -53,6 +55,8 @@ class LoginView extends StatelessWidget {
                         const SizedBox(height: 20),
                         //password
                         TextFormField(
+                          onFieldSubmitted: (_) =>
+                              onFormSubmit(loginFormProvider, authProvider),
                           onChanged: (value) =>
                               loginFormProvider.password = value,
                           validator: (value) {
@@ -73,22 +77,17 @@ class LoginView extends StatelessWidget {
                             icon: Icons.lock_outline_rounded,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         CustomOutlinedButton(
                           onPressed: () {
-                            final isValid = loginFormProvider.validateForm();
-
-                            if (isValid) {
-                              authProvider.login(loginFormProvider.email,
-                                  loginFormProvider.password);
-                            }
+                            onFormSubmit(loginFormProvider, authProvider);
                           },
                           text: "Entrar",
                         ),
 
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
 
@@ -107,5 +106,14 @@ class LoginView extends StatelessWidget {
             );
           },
         ));
+  }
+
+  void onFormSubmit(
+      LoginFormProvider loginFormProvider, AuthProvider authProvider) {
+    final isValid = loginFormProvider.validateForm();
+
+    if (isValid) {
+      authProvider.login(loginFormProvider.email, loginFormProvider.password);
+    }
   }
 }
