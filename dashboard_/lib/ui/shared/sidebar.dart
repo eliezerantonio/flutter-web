@@ -1,3 +1,4 @@
+import 'package:dashboard_/providers/auth_provider.dart';
 import 'package:dashboard_/providers/sidemenu_provider.dart';
 import 'package:dashboard_/router/router.dart';
 import 'package:dashboard_/services/navigation_service.dart';
@@ -101,15 +102,14 @@ class Sidebar extends StatelessWidget {
             isActive: sideMenuProvider.currrentPage == Flurorouter.blankRoute,
             onPressed: () => navigateTo(Flurorouter.blankRoute),
           ),
-          SizedBox(
-            height: 50,
-          ),
-          TextSeparator(text: 'Exit'),
+          const SizedBox(height: 50),
+          const TextSeparator(text: 'Exit'),
           MenuItem(
             text: 'Logout',
             icon: Icons.exit_to_app_outlined,
             isActive: false,
-            onPressed: () => print("dashboard"),
+            onPressed: () =>
+                Provider.of<AuthProvider>(context, listen: false).logout(),
           ),
         ],
       ),

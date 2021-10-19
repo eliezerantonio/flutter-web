@@ -32,6 +32,8 @@ class AuthProvider with ChangeNotifier {
       LocalStorage.prefs.setString('token', authResponse.token);
       NavigationService.replaceTo(Flurorouter.dashboardRoute);
 
+      CafeApi.configureDio();
+
       notifyListeners();
     }).catchError((e) {
       print("Erro em: ${e.toString()}");
@@ -53,7 +55,7 @@ class AuthProvider with ChangeNotifier {
       authStatus = AuthStatus.authenticated;
       LocalStorage.prefs.setString('token', authResponse.token);
       NavigationService.replaceTo(Flurorouter.dashboardRoute);
-
+      CafeApi.configureDio();
       notifyListeners();
     }).catchError((e) {
       print("Erro em: $e");
@@ -69,11 +71,27 @@ class AuthProvider with ChangeNotifier {
       return false;
     }
 
-//TODO:ir ao backend
+    try {
+      final response = await CafeApi.httpGet("/api/auth");
 
-    await Future.delayed(Duration(milliseconds: 1000));
-    authStatus = AuthStatus.authenticated;
+      final authResponse = AuthResponse.fromMap(response);
+      this.user = authResponse.usuario;
+      authStatus = AuthStatus.authenticated;
+      notifyListeners();
+
+      return true;
+    } catch (e) {
+      print(e);
+
+      AuthStatus.notAuthenticated;
+      notifyListeners();
+      return false;
+    }
+  }
+
+  logout() {
+    LocalStorage.prefs.remove('token');
+    authStatus = AuthStatus.notAuthenticated;
     notifyListeners();
-    return true;
   }
 }
