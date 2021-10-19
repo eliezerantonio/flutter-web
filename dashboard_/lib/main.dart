@@ -1,22 +1,23 @@
-import 'package:dashboard/providers/auth_provider.dart';
-import 'package:dashboard/router/router.dart';
-import 'package:dashboard/services/local_storage.dart';
-import 'package:dashboard/services/navigation_service.dart';
-import 'package:dashboard/services/notifications_service.dart';
+import 'package:dashboard_/providers/auth_provider.dart';
+import 'package:dashboard_/router/router.dart';
+import 'package:dashboard_/services/local_storage.dart';
+import 'package:dashboard_/services/navigation_service.dart';
+import 'package:dashboard_/services/notifications_service.dart';
+import 'package:dashboard_/ui/layout/dashboard/dashboard_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:dashboard/api/CafeApi.dart';
+import 'package:dashboard_/api/CafeApi.dart';
 import 'providers/sidemenu_provider.dart';
 import 'ui/layout/auth/auth_layout.dart';
-import 'ui/layout/dashboard/dashboard_layout.dart';
+
 import 'ui/layout/splash/splash_layout.dart';
 
 void main() async {
   await LocalStorage.configurePrefs();
   CafeApi.configureDio();
   Flurorouter.configureRoutes();
-  runApp(ProviderApp());
+  runApp(const ProviderApp());
 }
 
 class ProviderApp extends StatelessWidget {
@@ -35,12 +36,14 @@ class ProviderApp extends StatelessWidget {
           create: (_) => SideMenuProvider(),
         ),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     );
   }
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

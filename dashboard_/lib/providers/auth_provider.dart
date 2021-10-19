@@ -1,9 +1,9 @@
-import 'package:dashboard/api/CafeApi.dart';
-import 'package:dashboard/models/http/auth_response.dart';
-import 'package:dashboard/router/router.dart';
-import 'package:dashboard/services/local_storage.dart';
-import 'package:dashboard/services/navigation_service.dart';
-import 'package:dashboard/services/notifications_service.dart';
+import 'package:dashboard_/api/CafeApi.dart';
+import 'package:dashboard_/models/http/auth_response.dart';
+import 'package:dashboard_/router/router.dart';
+import 'package:dashboard_/services/local_storage.dart';
+import 'package:dashboard_/services/navigation_service.dart';
+import 'package:dashboard_/services/notifications_service.dart';
 import 'package:flutter/cupertino.dart';
 
 enum AuthStatus { checking, authenticated, notAuthenticated }
