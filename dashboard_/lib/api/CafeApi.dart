@@ -1,8 +1,10 @@
+// ignore_for_file: unnecessary_new
+
 import 'package:dashboard_/services/local_storage.dart';
 import 'package:dio/dio.dart';
 
 class CafeApi {
-  static Dio _dio = new Dio();
+  static final Dio _dio = new Dio();
 
   static void configureDio() {
     //base da url
@@ -26,6 +28,7 @@ class CafeApi {
   }
 
   static Future post(String path, Map<String, dynamic> data) async {
+    // ignore: avoid_print
     print("vindo do formularip $data");
     final formData = FormData.fromMap(data);
 

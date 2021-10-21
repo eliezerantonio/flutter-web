@@ -5,13 +5,13 @@ class CategoriesProvider extends ChangeNotifier {
   List categories = [];
 
   getCategories() async {
-    final resp = await CafeApi.httpGet("/categories");
+    final resp = await CafeApi.httpGet("/categorias");
+
+    print(resp);
 // final categoriesResp=CategoriesResponse.fromMap(resp);
 
 // this.categories=[...categoriesResp.categorias]
 
     notifyListeners();
   }
-
-  
 }
