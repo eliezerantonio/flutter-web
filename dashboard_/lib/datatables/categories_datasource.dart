@@ -1,4 +1,5 @@
 import 'package:dashboard_/models/category.dart';
+import 'package:dashboard_/ui/modals/category_modal.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesDTS extends DataTableSource {
@@ -27,7 +28,15 @@ class CategoriesDTS extends DataTableSource {
           Row(children: [
             IconButton(
               icon: const Icon(Icons.edit_outlined),
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  context: context,
+                  builder: (_) =>  CategoryModal(
+                    categoria: category,
+                  ),
+                );
+              },
             ),
             IconButton(
               icon: Icon(Icons.delete_outlined,

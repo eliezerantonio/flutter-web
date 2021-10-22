@@ -58,11 +58,11 @@ class _CategoriesViewState extends State<CategoriesView> {
               CustomIconButton(
                 icon: Icons.add_outlined,
                 onPressed: () {
-                  print("cliquei no bt");
+                
                   showModalBottomSheet(
                     backgroundColor: Colors.transparent,
                     context: context,
-                    builder: (_) => CategoryModal(
+                    builder: (_) => const CategoryModal(
                       categoria: null,
                     ),
                   );

@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_new
+// ignore_for_file: unnecessary_new, file_names
 
 import 'package:dashboard_/services/local_storage.dart';
 import 'package:dio/dio.dart';
@@ -38,6 +38,20 @@ class CafeApi {
       return resp.data;
     } catch (e) {
       throw ("Error no POST");
+    }
+  }
+
+  static Future put(String path, Map<String, dynamic> data) async {
+    // ignore: avoid_print
+    print("vindo do formularip $data");
+    final formData = FormData.fromMap(data);
+
+    try {
+      final resp = await _dio.put(path, data: formData);
+
+      return resp.data;
+    } catch (e) {
+      throw ("Error no PUT");
     }
   }
 }

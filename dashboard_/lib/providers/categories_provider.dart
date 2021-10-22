@@ -12,7 +12,44 @@ class CategoriesProvider extends ChangeNotifier {
     final categoriesResp = CategoriesResponse.fromMap(resp);
 
     categories = [...categoriesResp.categorias];
-  
+
     notifyListeners();
+  }
+
+  Future newCategory(String name) async {
+    final data = {
+      'nombre': name,
+    };
+
+    try {
+      final json = await CafeApi.post('/categorias', data);
+
+      final newCategory = Categoria.fromMap(json);
+
+      categories.add(newCategory);
+      notifyListeners();
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  Future updateCategory(String name, String id) async {
+    final data = {
+      'nombre': name,
+    };
+
+    try {
+      final json = await CafeApi.put('/categorias/$id', data);
+
+      this.categories = this.categories.map((category) {
+        if (category.id != id) return category;
+
+        category.nombre = name;
+        return category;
+      }).toList();
+      notifyListeners();
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 }

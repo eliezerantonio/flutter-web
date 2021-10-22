@@ -1,8 +1,10 @@
 import 'package:dashboard_/models/category.dart';
+import 'package:dashboard_/providers/categories_provider.dart';
 import 'package:dashboard_/ui/buttons/custom_outline_button.dart';
 import 'package:dashboard_/ui/inputs/custom_inputs.dart';
 import 'package:dashboard_/ui/labels/custom_labels.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CategoryModal extends StatefulWidget {
   const CategoryModal({Key? key, this.categoria}) : super(key: key);
@@ -26,6 +28,8 @@ class _CategoryModalState extends State<CategoryModal> {
 
   @override
   Widget build(BuildContext context) {
+    final categoryProvider =
+        Provider.of<CategoriesProvider>(context, listen: false);
     return Container(
       padding: const EdgeInsets.all(
         20,
@@ -68,7 +72,17 @@ class _CategoryModalState extends State<CategoryModal> {
             margin: const EdgeInsets.only(top: 30),
             alignment: Alignment.center,
             child: CustomOutlinedButton(
-              onPressed: () {},
+              onPressed: () async {
+                if (id == null) {
+                  //criar
+                  await categoryProvider.newCategory(nombre);
+                } else {
+                  //atualizar
+                  await categoryProvider.updateCategory(nombre, id!);
+                }
+
+                Navigator.of(context).pop();
+              },
               text: "Salvar",
               color: Colors.white,
             ),
