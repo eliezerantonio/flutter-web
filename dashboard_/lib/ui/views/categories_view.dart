@@ -19,11 +19,14 @@ class _CategoriesViewState extends State<CategoriesView> {
   @override
   void initState() {
     super.initState();
-    Provider.of<CategoriesProvider>(context, listen:false).getCategories();
+    Provider.of<CategoriesProvider>(context, listen: false).getCategories();
   }
+
   @override
   Widget build(BuildContext context) {
+    final categorias = Provider.of<CategoriesProvider>(context).categories;
     return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: ListView(
         physics: const ClampingScrollPhysics(),
         children: [
@@ -44,7 +47,7 @@ class _CategoriesViewState extends State<CategoriesView> {
                 _rowsPerPage = value!;
               });
             },
-            source: CategoriesDTS(),
+            source: CategoriesDTS(categorias, context),
             header: const FittedBox(
               fit: BoxFit.contain,
               child: Text("Todas categorias disponiveis", maxLines: 2),
