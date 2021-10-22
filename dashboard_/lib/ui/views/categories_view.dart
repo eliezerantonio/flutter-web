@@ -3,6 +3,7 @@ import 'package:dashboard_/providers/categories_provider.dart';
 import 'package:dashboard_/ui/buttons/custom_icon_button.dart';
 import 'package:dashboard_/ui/cards/white_card.dart';
 import 'package:dashboard_/ui/labels/custom_labels.dart';
+import 'package:dashboard_/ui/modals/category_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -56,7 +57,16 @@ class _CategoriesViewState extends State<CategoriesView> {
             actions: [
               CustomIconButton(
                 icon: Icons.add_outlined,
-                onPressed: () {},
+                onPressed: () {
+                  print("cliquei no bt");
+                  showModalBottomSheet(
+                    backgroundColor: Colors.transparent,
+                    context: context,
+                    builder: (_) => CategoryModal(
+                      categoria: null,
+                    ),
+                  );
+                },
                 text: 'Criar',
               ),
             ],
