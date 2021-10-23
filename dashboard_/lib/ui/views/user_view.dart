@@ -87,8 +87,15 @@ class _UserViewBody extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _AvatarContainer() {
+class _AvatarContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final userFormProvider = Provider.of<UserFormProvider>(context);
+
+    final user = userFormProvider.user!;
+
     return WhiteCard(
       width: 250,
       child: Container(
@@ -139,9 +146,9 @@ class _UserViewBody extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            const Text(
-              "Nome do usuario",
-              style: TextStyle(fontWeight: FontWeight.bold),
+            Text(
+              user.nombre,
+              style: const TextStyle(fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           ],
@@ -158,7 +165,8 @@ class _UserViewForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = context.watch<UserFormProvider>().user!;
+    final userFormProvider = context.watch<UserFormProvider>();
+    final user = userFormProvider.user!;
     return WhiteCard(
       title: 'Info Geral',
       child: Form(
@@ -167,6 +175,8 @@ class _UserViewForm extends StatelessWidget {
           children: [
             TextFormField(
               initialValue: user.nombre,
+              onChanged: (value) =>
+                  userFormProvider.copyUserWith(nombre: value),
               validator: (value) {
                 if (value == null || value.isEmpty) return 'Digite o nome';
                 if (value.length < 4) return 'Digite minino 4 digitos';
@@ -182,6 +192,7 @@ class _UserViewForm extends StatelessWidget {
             const SizedBox(height: 20),
             TextFormField(
               initialValue: user.correo,
+              onChanged: (value) => user.correo = value,
               validator: (value) {
                 if (!EmailValidator.validate(value ?? '')) {
                   return 'Email invalido';
@@ -204,6 +215,7 @@ class _UserViewForm extends StatelessWidget {
                     shadowColor: MaterialStateProperty.all(Colors.transparent)),
                 onPressed: () {
 //ATUALIZAR
+                  userFormProvider.updateUser();
                 },
                 child: Row(
                   children: const [
