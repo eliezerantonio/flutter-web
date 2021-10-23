@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 
 class UsersProvider extends ChangeNotifier {
   UsersProvider() {
-    this.getPaginatedUsers();
+    getPaginatedUsers();
   }
 
   List<Usuario> users = [];
   bool isLoading = true;
+  bool ascending = true;
+  int? sortColumnIndex;
 
   getPaginatedUsers() async {
     final resp = await CafeApi.httpGet("/usuarios?limite=10&desde=0");
@@ -19,6 +21,19 @@ class UsersProvider extends ChangeNotifier {
     users = [...usersResponse.usuarios];
 
     isLoading = false;
+    notifyListeners();
+  }
+
+  void sort<T>(Comparable<T> Function(Usuario user) getField) {
+    users.sort((a, b) {
+      final aValue = getField(a);
+      final bValue = getField(b);
+
+      return ascending
+          ? Comparable.compare(aValue, bValue)
+          : Comparable.compare(bValue, aValue);
+    });
+    ascending = !ascending;
     notifyListeners();
   }
 }
