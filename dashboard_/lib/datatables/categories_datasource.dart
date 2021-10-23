@@ -1,6 +1,8 @@
 import 'package:dashboard_/models/category.dart';
+import 'package:dashboard_/providers/categories_provider.dart';
 import 'package:dashboard_/ui/modals/category_modal.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CategoriesDTS extends DataTableSource {
   CategoriesDTS(this.categorias, this.context);
@@ -32,7 +34,7 @@ class CategoriesDTS extends DataTableSource {
                 showModalBottomSheet(
                   backgroundColor: Colors.transparent,
                   context: context,
-                  builder: (_) =>  CategoryModal(
+                  builder: (_) => CategoryModal(
                     categoria: category,
                   ),
                 );
@@ -53,7 +55,11 @@ class CategoriesDTS extends DataTableSource {
                         }),
                     TextButton(
                         child: const Text("Sim, eliminar"),
-                        onPressed: () {
+                        onPressed: () async {
+                          await Provider.of<CategoriesProvider>(context,
+                                  listen: false)
+                              .delete(category.id);
+
                           Navigator.pop(context);
                         }),
                   ],

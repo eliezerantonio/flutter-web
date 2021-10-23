@@ -41,12 +41,23 @@ class CategoriesProvider extends ChangeNotifier {
     try {
       final json = await CafeApi.put('/categorias/$id', data);
 
-      this.categories = this.categories.map((category) {
+      categories = categories.map((category) {
         if (category.id != id) return category;
 
         category.nombre = name;
         return category;
       }).toList();
+      notifyListeners();
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  Future delete(String id) async {
+    try {
+      await CafeApi.delete('/categorias/$id', {});
+      categories.removeWhere((category) => category.id == id);
+
       notifyListeners();
     } catch (e) {
       debugPrint(e.toString());

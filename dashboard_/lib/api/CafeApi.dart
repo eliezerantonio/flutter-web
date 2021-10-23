@@ -54,4 +54,18 @@ class CafeApi {
       throw ("Error no PUT");
     }
   }
+
+  static Future delete(String path, Map<String, dynamic> data) async {
+    // ignore: avoid_print
+    print("vindo do formularip $data");
+    final formData = FormData.fromMap(data);
+
+    try {
+      final resp = await _dio.delete(path, data: formData);
+
+      return resp.data;
+    } catch (e) {
+      throw ("Error no DELETE");
+    }
+  }
 }
