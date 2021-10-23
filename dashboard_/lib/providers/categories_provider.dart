@@ -29,7 +29,7 @@ class CategoriesProvider extends ChangeNotifier {
       categories.add(newCategory);
       notifyListeners();
     } catch (e) {
-      debugPrint(e.toString());
+      throw 'Erro ao criar a categoria ';
     }
   }
 
@@ -49,7 +49,7 @@ class CategoriesProvider extends ChangeNotifier {
       }).toList();
       notifyListeners();
     } catch (e) {
-      debugPrint(e.toString());
+      throw 'Erro ao atualizar a categoria ';
     }
   }
 

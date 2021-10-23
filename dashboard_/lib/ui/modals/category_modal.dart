@@ -1,5 +1,6 @@
 import 'package:dashboard_/models/category.dart';
 import 'package:dashboard_/providers/categories_provider.dart';
+import 'package:dashboard_/services/notifications_service.dart';
 import 'package:dashboard_/ui/buttons/custom_outline_button.dart';
 import 'package:dashboard_/ui/inputs/custom_inputs.dart';
 import 'package:dashboard_/ui/labels/custom_labels.dart';
@@ -73,15 +74,22 @@ class _CategoryModalState extends State<CategoryModal> {
             alignment: Alignment.center,
             child: CustomOutlinedButton(
               onPressed: () async {
-                if (id == null) {
-                  //criar
-                  await categoryProvider.newCategory(nombre);
-                } else {
-                  //atualizar
-                  await categoryProvider.updateCategory(nombre, id!);
+                try {
+                  if (id == null) {
+                    //criar
+                    await categoryProvider.newCategory(nombre);
+                    NotificationsService.showSnackbarSuccess("$nombre Criado");
+                  } else {
+                    //atualizar
+                    await categoryProvider.updateCategory(nombre, id!);
+                    NotificationsService.showSnackbarSuccess(
+                        "$nombre Atualizado");
+                  }
+                  Navigator.of(context).pop();
+                } catch (e) {
+                  Navigator.of(context).pop();
+                  NotificationsService.showSnackbarError(e.toString());
                 }
-
-                Navigator.of(context).pop();
               },
               text: "Salvar",
               color: Colors.white,
