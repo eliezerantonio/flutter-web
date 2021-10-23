@@ -24,7 +24,7 @@ class RegisterView extends StatelessWidget {
             color: Colors.black,
             child: Center(
               child: ConstrainedBox(
-                constraints: BoxConstraints(
+                constraints: const BoxConstraints(
                   maxWidth: 370,
                 ),
                 child: Form(
@@ -43,7 +43,7 @@ class RegisterView extends StatelessWidget {
                             return "Digite ao menos 10 caracteres";
                           }
                         },
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                         ),
                         decoration: CustomInputs.authInputDecoration(
@@ -51,7 +51,7 @@ class RegisterView extends StatelessWidget {
                             icon: Icons.people_outline_rounded,
                             label: "Nome"),
                       ), //email
-                      SizedBox(
+                  const    SizedBox(
                         height: 20,
                       ),
                       TextFormField(
@@ -63,7 +63,7 @@ class RegisterView extends StatelessWidget {
 
                           return null;
                         },
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                         ),
                         decoration: CustomInputs.authInputDecoration(
@@ -71,7 +71,7 @@ class RegisterView extends StatelessWidget {
                             icon: Icons.email_outlined,
                             label: "Email"),
                       ),
-                      SizedBox(
+                 const     SizedBox(
                         height: 20,
                       ),
                       //password
@@ -86,7 +86,7 @@ class RegisterView extends StatelessWidget {
                             return "Digite ao menos 9 caracteres";
                           }
                         },
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                         ),
                         obscureText: true,
@@ -96,7 +96,7 @@ class RegisterView extends StatelessWidget {
                           icon: Icons.lock_outline_rounded,
                         ),
                       ),
-                      SizedBox(
+                const      SizedBox(
                         height: 20,
                       ),
                       CustomOutlinedButton(
@@ -118,14 +118,14 @@ class RegisterView extends StatelessWidget {
                         text: "Criar conta",
                       ),
 
-                      SizedBox(
+                 const     SizedBox(
                         height: 20,
                       ),
 
                       LinkText(
                         text: "Tenho uma conta",
                         onPressed: () {
-                          Navigator.pushNamed(context, Flurorouter.loginRoute);
+                          Navigator.pushReplacementNamed(context, Flurorouter.loginRoute);
                         },
                       ),
                     ],

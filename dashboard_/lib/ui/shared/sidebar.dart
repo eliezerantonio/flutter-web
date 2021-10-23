@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 
 class Sidebar extends StatelessWidget {
   void navigateTo(String routeName) {
-    NavigationService.nivigateTo(routeName);
+    NavigationService.replaceTo(routeName);
     SideMenuProvider.closeMenu();
   }
 
@@ -22,11 +22,11 @@ class Sidebar extends StatelessWidget {
       height: double.infinity,
       decoration: buildBoxDecoration(),
       child: ListView(
-        physics: ClampingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         children: [
-          Logo(),
-          SizedBox(height: 30),
-          TextSeparator(text: 'main'),
+          const Logo(),
+          const SizedBox(height: 30),
+          const TextSeparator(text: 'main'),
           MenuItem(
             isActive:
                 sideMenuProvider.currrentPage == Flurorouter.dashboardRoute,
