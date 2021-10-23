@@ -48,4 +48,16 @@ class UsersProvider extends ChangeNotifier {
     ascending = !ascending;
     notifyListeners();
   }
+
+  void refreshUser(Usuario newUser) {
+    users = users.map((user) {
+      if (user.uid == newUser.uid) {
+        user = newUser;
+      }
+
+      return user;
+    }).toList();
+
+    notifyListeners();
+  }
 }

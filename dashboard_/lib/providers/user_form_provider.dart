@@ -1,4 +1,6 @@
+import 'package:dashboard_/api/CafeApi.dart';
 import 'package:dashboard_/models/usuario.dart';
+
 import 'package:flutter/material.dart';
 
 class UserFormProvider extends ChangeNotifier {
@@ -34,7 +36,21 @@ class UserFormProvider extends ChangeNotifier {
     return formKey.currentState!.validate();
   }
 
-  updateUser() {
-    if (!validForm()) return;
+  Future updateUser() async {
+    if (!validForm()) return false;
+
+    final data = {
+      'nombre': user!.nombre,
+      'correo': user!.correo,
+    };
+
+    try {
+      final resp = await CafeApi.put('/usuarios/${user!.uid}', data);
+      return true;
+    } catch (e) {
+      debugPrint("error en updateUser: $e");
+
+      return false;
+    }
   }
 }

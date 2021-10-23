@@ -38,8 +38,9 @@ class LoginView extends StatelessWidget {
                               onFormSubmit(loginFormProvider, authProvider),
                           onChanged: (value) => loginFormProvider.email = value,
                           validator: (value) {
-                            if (!EmailValidator.validate(value ?? ''))
+                            if (!EmailValidator.validate(value ?? '')) {
                               return 'Email invalido';
+                            }
 
                             return null;
                           },
@@ -60,10 +61,12 @@ class LoginView extends StatelessWidget {
                           onChanged: (value) =>
                               loginFormProvider.password = value,
                           validator: (value) {
-                            if (value == null || value.isEmpty)
+                            if (value == null || value.isEmpty) {
                               return 'Digite a senha';
-                            if (value.length < 6)
+                            }
+                            if (value.length < 6) {
                               return 'Digite ao menos 6 caracteres';
+                            }
 
                             return null;
                           },

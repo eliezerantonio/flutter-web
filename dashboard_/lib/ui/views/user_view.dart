@@ -1,6 +1,7 @@
 import 'package:dashboard_/models/usuario.dart';
 import 'package:dashboard_/providers/user_form_provider.dart';
 import 'package:dashboard_/providers/users_provider.dart';
+import 'package:dashboard_/services/notifications_service.dart';
 import 'package:dashboard_/ui/cards/white_card.dart';
 import 'package:dashboard_/ui/inputs/custom_inputs.dart';
 import 'package:dashboard_/ui/labels/custom_labels.dart';
@@ -192,7 +193,8 @@ class _UserViewForm extends StatelessWidget {
             const SizedBox(height: 20),
             TextFormField(
               initialValue: user.correo,
-              onChanged: (value) => user.correo = value,
+              onChanged: (value) =>
+                  userFormProvider.copyUserWith(correo: value),
               validator: (value) {
                 if (!EmailValidator.validate(value ?? '')) {
                   return 'Email invalido';
@@ -213,9 +215,18 @@ class _UserViewForm extends StatelessWidget {
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.indigo),
                     shadowColor: MaterialStateProperty.all(Colors.transparent)),
-                onPressed: () {
+                onPressed: () async {
 //ATUALIZAR
-                  userFormProvider.updateUser();
+                  final saved = await userFormProvider.updateUser();
+                  if (saved) {
+                    NotificationsService.showSnackbarSuccess(
+                        "Usuario Atualizado");
+                    Provider.of<UsersProvider>(context, listen: false)
+                        .refreshUser(user);
+                  } else {
+                    NotificationsService.showSnackbarSuccess(
+                        "Erro ao atualizar ");
+                  }
                 },
                 child: Row(
                   children: const [
