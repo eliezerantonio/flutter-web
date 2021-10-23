@@ -6,6 +6,7 @@ import 'package:dashboard_/ui/views/categories_view.dart';
 import 'package:dashboard_/ui/views/dashboard_view.dart';
 import 'package:dashboard_/ui/views/icons_view.dart';
 import 'package:dashboard_/ui/views/login_view.dart';
+import 'package:dashboard_/ui/views/users_view.dart';
 import 'package:fluro/fluro.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +18,7 @@ class DashboardHandlers {
         .setCurrentPageUrl(Flurorouter.dashboardRoute);
 
     if (authProvider.authStatus == AuthStatus.authenticated) {
-      return DashboardView();
+      return const DashboardView();
     } else {
       return LoginView();
     }
@@ -30,7 +31,7 @@ class DashboardHandlers {
         .setCurrentPageUrl(Flurorouter.iconsRoute);
 
     if (authProvider.authStatus == AuthStatus.authenticated) {
-      return IconsView();
+      return const IconsView();
     } else {
       return LoginView();
     }
@@ -43,11 +44,13 @@ class DashboardHandlers {
         .setCurrentPageUrl(Flurorouter.blankRoute);
 
     if (authProvider.authStatus == AuthStatus.authenticated) {
-      return BlankView();
+      return const BlankView();
     } else {
       return LoginView();
     }
   });
+
+
   static Handler categories = Handler(handlerFunc: (context, params) {
     final authProvider = Provider.of<AuthProvider>(context!);
     //setando a rota actual na tela
@@ -55,9 +58,25 @@ class DashboardHandlers {
         .setCurrentPageUrl(Flurorouter.categoriesRoute);
 
     if (authProvider.authStatus == AuthStatus.authenticated) {
-      return CategoriesView();
+      return const CategoriesView();
     } else {
       return LoginView();
     }
   });
+
+  //Users
+
+  static Handler users = Handler(handlerFunc: (context, params) {
+    final authProvider = Provider.of<AuthProvider>(context!);
+    //setando a rota actual na tela
+    Provider.of<SideMenuProvider>(context, listen: false)
+        .setCurrentPageUrl(Flurorouter.usersRoute);
+
+    if (authProvider.authStatus == AuthStatus.authenticated) {
+      return const UsersView();
+    } else {
+      return LoginView();
+    }
+  });
+
 }
