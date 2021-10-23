@@ -23,8 +23,8 @@ class UsersResponse {
 
   factory UsersResponse.fromMap(Map<String, dynamic> json) => UsersResponse(
         total: json["total"],
-        usuarios: List<Usuario>.from(
-            json["usuarios"].map((x) => Categoria.fromMap(x))),
+        usuarios:
+            List<Usuario>.from(json["usuarios"].map((x) => Usuario.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {

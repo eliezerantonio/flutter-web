@@ -1,14 +1,16 @@
 import 'package:dashboard_/datatables/user_datasource.dart';
-import 'package:dashboard_/ui/cards/white_card.dart';
+import 'package:dashboard_/providers/users_provider.dart';
 import 'package:dashboard_/ui/labels/custom_labels.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class UsersView extends StatelessWidget {
   const UsersView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final usersDataSource = UsersDataSource();
+    final usersProvider = Provider.of<UsersProvider>(context);
+    final usersDataSource = UsersDataSource(usersProvider.users);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: ListView(

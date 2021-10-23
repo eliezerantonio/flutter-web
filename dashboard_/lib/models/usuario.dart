@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 class Usuario {
-  Usuario({
-    required this.rol,
-    required this.estado,
-    required this.google,
-    required this.nombre,
-    required this.correo,
-    required this.uid,
-  });
+  Usuario(
+      {required this.rol,
+      required this.estado,
+      required this.google,
+      required this.nombre,
+      required this.correo,
+      required this.uid,
+      this.img});
 
   String rol;
   bool estado;
@@ -16,6 +16,7 @@ class Usuario {
   String nombre;
   String correo;
   String uid;
+  String? img;
 
   factory Usuario.fromJson(String str) => Usuario.fromMap(json.decode(str));
 
