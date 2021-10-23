@@ -1,5 +1,6 @@
 import 'package:dashboard_/providers/auth_provider.dart';
 import 'package:dashboard_/providers/categories_provider.dart';
+import 'package:dashboard_/providers/user_form_provider.dart';
 import 'package:dashboard_/providers/users_provider.dart';
 import 'package:dashboard_/router/router.dart';
 import 'package:dashboard_/services/local_storage.dart';
@@ -42,6 +43,9 @@ class ProviderApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => UsersProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => UserFormProvider(),
         ),
       ],
       child: const MyApp(),

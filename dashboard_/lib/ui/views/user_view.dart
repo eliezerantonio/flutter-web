@@ -1,8 +1,10 @@
 import 'package:dashboard_/models/usuario.dart';
+import 'package:dashboard_/providers/user_form_provider.dart';
 import 'package:dashboard_/providers/users_provider.dart';
 import 'package:dashboard_/ui/cards/white_card.dart';
 import 'package:dashboard_/ui/inputs/custom_inputs.dart';
 import 'package:dashboard_/ui/labels/custom_labels.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,11 +21,19 @@ class _UserViewState extends State<UserView> {
   @override
   void initState() {
     super.initState();
+
+    //User provider
+    //User form provider
+    final userFormProvider =
+        Provider.of<UserFormProvider>(context, listen: false);
     Provider.of<UsersProvider>(context, listen: false)
         .getUserById(widget.uid)
-        .then((userDB) => setState(() {
-              user = userDB;
-            }));
+        .then((userDB) {
+      userFormProvider.user = userDB;
+      setState(() {
+        user = userDB;
+      });
+    });
   }
 
   @override
@@ -148,6 +158,7 @@ class _UserViewForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = context.watch<UserFormProvider>().user!;
     return WhiteCard(
       title: 'Info Geral',
       child: Form(
@@ -155,6 +166,13 @@ class _UserViewForm extends StatelessWidget {
         child: Column(
           children: [
             TextFormField(
+              initialValue: user.nombre,
+              validator: (value) {
+                if (value == null || value.isEmpty) return 'Digite o nome';
+                if (value.length < 4) return 'Digite minino 4 digitos';
+
+                return null;
+              },
               decoration: CustomInputs.formInputDecoration(
                 hint: 'Nome Usuario',
                 label: 'Nome',
@@ -163,6 +181,14 @@ class _UserViewForm extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             TextFormField(
+              initialValue: user.correo,
+              validator: (value) {
+                if (!EmailValidator.validate(value ?? '')) {
+                  return 'Email invalido';
+                }
+
+                return null;
+              },
               decoration: CustomInputs.formInputDecoration(
                 hint: 'Email do Usuario',
                 label: 'E-mail',
@@ -176,7 +202,9 @@ class _UserViewForm extends StatelessWidget {
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.indigo),
                     shadowColor: MaterialStateProperty.all(Colors.transparent)),
-                onPressed: () {},
+                onPressed: () {
+//ATUALIZAR
+                },
                 child: Row(
                   children: const [
                     Icon(
