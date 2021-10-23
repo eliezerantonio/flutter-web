@@ -1,5 +1,6 @@
 import 'package:dashboard_/api/CafeApi.dart';
 import 'package:dashboard_/models/http/auth_response.dart';
+import 'package:dashboard_/models/usuario.dart';
 import 'package:dashboard_/router/router.dart';
 import 'package:dashboard_/services/local_storage.dart';
 import 'package:dashboard_/services/navigation_service.dart';
