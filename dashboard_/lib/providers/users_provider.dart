@@ -24,7 +24,7 @@ class UsersProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<Usuario> getUserById(String uid) async {
+  Future<Usuario?> getUserById(String uid) async {
     try {
       final resp = await CafeApi.httpGet("/usuarios/$uid");
 
@@ -32,7 +32,7 @@ class UsersProvider extends ChangeNotifier {
 
       return user;
     } catch (e) {
-      throw e;
+      return null;
     }
   }
 

@@ -1,6 +1,7 @@
 import 'package:dashboard_/models/usuario.dart';
 import 'package:dashboard_/providers/user_form_provider.dart';
 import 'package:dashboard_/providers/users_provider.dart';
+import 'package:dashboard_/services/navigation_service.dart';
 import 'package:dashboard_/services/notifications_service.dart';
 import 'package:dashboard_/ui/cards/white_card.dart';
 import 'package:dashboard_/ui/inputs/custom_inputs.dart';
@@ -30,11 +31,24 @@ class _UserViewState extends State<UserView> {
     Provider.of<UsersProvider>(context, listen: false)
         .getUserById(widget.uid)
         .then((userDB) {
-      userFormProvider.user = userDB;
-      setState(() {
-        user = userDB;
-      });
+      if (userDB != null) {
+        userFormProvider.user = userDB;
+        userFormProvider.formKey = GlobalKey<FormState>();
+        ;
+        setState(() {
+          user = userDB;
+        });
+      } else {
+        NavigationService.replaceTo("/dashboard/users");
+      }
     });
+  }
+
+  @override
+  void dispose() {
+    user = null;
+    context.read<UserFormProvider>().user = null;
+    super.dispose();
   }
 
   @override
@@ -81,7 +95,7 @@ class _UserViewBody extends StatelessWidget {
             children: [
               //AVATAR
               _AvatarContainer(),
-              _UserViewForm(),
+              const _UserViewForm(),
             ],
           )
         ],
@@ -171,6 +185,7 @@ class _UserViewForm extends StatelessWidget {
     return WhiteCard(
       title: 'Info Geral',
       child: Form(
+        key: userFormProvider.formKey,
         autovalidateMode: AutovalidateMode.always,
         child: Column(
           children: [
@@ -210,13 +225,13 @@ class _UserViewForm extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 100),
+              constraints: const BoxConstraints(maxWidth: 110),
               child: ElevatedButton(
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.indigo),
                     shadowColor: MaterialStateProperty.all(Colors.transparent)),
                 onPressed: () async {
-//ATUALIZAR
+                  //ATUALIZAR
                   final saved = await userFormProvider.updateUser();
                   if (saved) {
                     NotificationsService.showSnackbarSuccess(

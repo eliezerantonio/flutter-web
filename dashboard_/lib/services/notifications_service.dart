@@ -24,7 +24,7 @@ class NotificationsService {
       content: Text(
         message,
         style: const TextStyle(
-          color: Colors.white,
+          color: Colors.black,
           fontSize: 20,
         ),
       ),
