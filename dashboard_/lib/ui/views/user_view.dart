@@ -71,7 +71,7 @@ class _UserViewState extends State<UserView> {
                 child: const CircularProgressIndicator(),
               ),
             ),
-          _UserViewBody()
+          if (user != null) const _UserViewBody()
         ],
       ),
     );

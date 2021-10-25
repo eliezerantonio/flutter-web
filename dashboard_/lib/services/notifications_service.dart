@@ -20,7 +20,7 @@ class NotificationsService {
 
   static showSnackbarSuccess(String message) {
     final snackBar = SnackBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.green[100],
       content: Text(
         message,
         style: const TextStyle(
