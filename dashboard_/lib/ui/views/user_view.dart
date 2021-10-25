@@ -7,6 +7,7 @@ import 'package:dashboard_/ui/cards/white_card.dart';
 import 'package:dashboard_/ui/inputs/custom_inputs.dart';
 import 'package:dashboard_/ui/labels/custom_labels.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -153,7 +154,19 @@ class _AvatarContainer extends StatelessWidget {
                       child: FloatingActionButton(
                         backgroundColor: Colors.indigo,
                         child: const Icon(Icons.camera_alt, size: 20),
-                        onPressed: () {},
+                        onPressed: () async {
+                          FilePickerResult? result =
+                              await FilePicker.platform.pickFiles(
+                            allowedExtensions: ["jpg", 'jpeg', "png"],
+                            allowMultiple: false,
+                          );
+
+                          if (result != null) {
+                            PlatformFile file = result.files.first;
+                       final response =await     userFormProvider.uploadFile(
+                                "/uploads/usuarios/${user.uid}", file.bytes!);
+                          }
+                        },
                       ),
                     ),
                   ),

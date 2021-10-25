@@ -1,5 +1,7 @@
 // ignore_for_file: unnecessary_new, file_names
 
+import 'dart:typed_data';
+
 import 'package:dashboard_/services/local_storage.dart';
 import 'package:dio/dio.dart';
 
@@ -64,8 +66,23 @@ class CafeApi {
       final resp = await _dio.delete(path, data: formData);
 
       return resp.data;
-    }on DioError catch (e) {
+    } on DioError catch (e) {
       throw ("Error no DELETE $e");
+    }
+  }
+
+  static Future uploadFile(String path, Uint8List bytes) async {
+    // ignore: avoid_print
+    print("vindo do formularip $bytes");
+    final formData =
+        FormData.fromMap({'archivo': MultipartFile.fromBytes(bytes)});
+
+    try {
+      final resp = await _dio.put(path, data: formData);
+
+      return resp.data;
+    } on DioError catch (e) {
+      throw ("Error no PUT $e");
     }
   }
 }

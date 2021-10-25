@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:dashboard_/api/CafeApi.dart';
 import 'package:dashboard_/models/usuario.dart';
 
@@ -6,7 +8,7 @@ import 'package:flutter/material.dart';
 class UserFormProvider extends ChangeNotifier {
   Usuario? user;
 
- late GlobalKey<FormState> formKey;
+  late GlobalKey<FormState> formKey;
 
   void updateListeners() {
     notifyListeners();
@@ -51,6 +53,18 @@ class UserFormProvider extends ChangeNotifier {
       debugPrint("error en updateUser: $e");
 
       return false;
+    }
+  }
+
+  Future<Usuario> uploadFile(String path, Uint8List bytes) async {
+    try {
+      final resp = await CafeApi.uploadFile(path, bytes);
+      user = Usuario.fromMap(resp);
+
+      notifyListeners();
+      return user!;
+    } catch (e) {
+      throw 'Error en user from provider';
     }
   }
 }
