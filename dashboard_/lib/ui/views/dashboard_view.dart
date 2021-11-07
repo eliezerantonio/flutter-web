@@ -7,7 +7,6 @@ import 'package:dashboard_/ui/labels/custom_labels.dart';
 import 'package:flutter/material.dart';
 import 'package:graphic/graphic.dart';
 import 'package:provider/provider.dart';
-import 'package:universal_html/html.dart';
 
 class DashboardView extends StatefulWidget {
   const DashboardView({Key? key}) : super(key: key);
