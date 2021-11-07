@@ -157,14 +157,16 @@ class _AvatarContainer extends StatelessWidget {
                         onPressed: () async {
                           FilePickerResult? result =
                               await FilePicker.platform.pickFiles(
-                            allowedExtensions: ["jpg", 'jpeg', "png"],
-                            allowMultiple: false,
+                            // allowedExtensions: ["jpg", 'jpeg', "png"],
+                            // allowMultiple: false,
                           );
 
                           if (result != null) {
                             PlatformFile file = result.files.first;
-                       final response =await     userFormProvider.uploadFile(
+                            final response = await userFormProvider.uploadFile(
                                 "/uploads/usuarios/${user.uid}", file.bytes!);
+
+                            print(" resposta $response");
                           }
                         },
                       ),

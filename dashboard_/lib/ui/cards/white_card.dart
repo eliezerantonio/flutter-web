@@ -12,12 +12,12 @@ class WhiteCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.all(8),
-        padding: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(10),
         decoration: buildBoxDecoration(),
         width: width != null ? width : null,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (title != null) ...[
               FittedBox(
@@ -25,12 +25,12 @@ class WhiteCard extends StatelessWidget {
                 child: Text(
                   title!,
                   style: GoogleFonts.roboto(
-                    fontSize: 15,
+                    fontSize: 35,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              Divider()
+              const Divider()
             ],
             child,
           ],

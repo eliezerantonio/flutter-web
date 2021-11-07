@@ -21,22 +21,22 @@ class Navbar extends StatelessWidget {
                 onPressed: () {
                   SideMenuProvider.openMenu();
                 },
-                icon: Icon(Icons.menu_outlined)),
+                icon:const Icon(Icons.menu_outlined)),
           ],
-          SizedBox(width: 5),
+       const   SizedBox(width: 5),
           //search input
           if (size.width > 390)
             ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: 250),
-              child: SearchText(),
+              constraints: const BoxConstraints(maxWidth: 250),
+              child: const SearchText(),
             ),
-          Spacer(),
-          NotificationsIndicator(),
-          SizedBox(
+          const Spacer(),
+          const NotificationsIndicator(),
+          const SizedBox(
             width: 10,
           ),
-          NavbarAvatar(),
-          SizedBox(
+          const NavbarAvatar(),
+          const SizedBox(
             width: 10,
           ),
         ],

@@ -21,7 +21,7 @@ class IconsView extends StatelessWidget {
           Wrap(
             crossAxisAlignment: WrapCrossAlignment.start,
             direction: Axis.horizontal,
-            children: [
+            children: const [
               WhiteCard(
                 title: 'ac_unit_outlined',
                 child: Center(

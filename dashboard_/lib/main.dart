@@ -39,6 +39,7 @@ class ProviderApp extends StatelessWidget {
           create: (_) => SideMenuProvider(),
         ),
         ChangeNotifierProvider(
+          lazy:false,
           create: (_) => CategoriesProvider(),
         ),
         ChangeNotifierProvider(

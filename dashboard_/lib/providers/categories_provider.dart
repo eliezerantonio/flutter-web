@@ -4,6 +4,9 @@ import 'package:dashboard_/models/http/categories_response.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesProvider extends ChangeNotifier {
+  CategoriesProvider() {
+    getCategories();
+  }
   List<Categoria> categories = [];
 
   getCategories() async {

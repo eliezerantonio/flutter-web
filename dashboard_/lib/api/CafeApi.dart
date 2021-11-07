@@ -73,7 +73,6 @@ class CafeApi {
 
   static Future uploadFile(String path, Uint8List bytes) async {
     // ignore: avoid_print
-    print("vindo do formularip $bytes");
     final formData =
         FormData.fromMap({'archivo': MultipartFile.fromBytes(bytes)});
 
